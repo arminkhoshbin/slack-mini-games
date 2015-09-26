@@ -9,6 +9,7 @@
   "author": "Armin Khoshbin <armin.khoshbin@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.0",
     "express": "^4.13.3"
   }
 }

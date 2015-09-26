@@ -2,6 +2,10 @@
 
 var express = require('express');
 var app = express();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser());
+
 var Roller = new (require('./libs/roller'))();
 
 app.post('/roll', function (req, res) {
