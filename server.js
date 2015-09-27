@@ -31,16 +31,11 @@ app.post('/roll', function (req, res) {
 
   request({
 	  url: config.webhook_url,
-	  headers: {
-    	'Content-Type': 'application/json',
-      'Content-Length': data.length,
-    },
+	  json: true,
 	  method: 'POST',
 	  body: data,
 	}, function (err, res, body) {
-	  if (!err && res.statusCode == 200) {
-	    console.log(body);
-	  }
+	    console.log(res);
 	});
 
 	//console.log(req.body.user_name);
