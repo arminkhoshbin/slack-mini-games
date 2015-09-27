@@ -30,7 +30,7 @@ app.post('/roll', function (req, res) {
   });
 
   var req = https.request({
-   	host: process.env.HOST,
+   	host: req.body.team_domain + '.slack.com',
     path: config.webhook_url,
     method: 'POST',
     headers: {
@@ -47,6 +47,8 @@ app.post('/roll', function (req, res) {
  	// write data to request body
 	req.write(data);
 	req.end();
+
+	res.end('');
   
 });
 
