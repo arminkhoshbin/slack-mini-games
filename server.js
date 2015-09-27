@@ -24,9 +24,10 @@ app.post('/roll', function (req, res) {
 	var number = Roller.start();
 
 	var data = JSON.stringify({
-    text: number,
-    username: 'slack-mini-games',
+    text: '@' + req.body.user_name + ' rolled number ' + number,
+    username: 'Slack Mini Games',
     channel: '#' + req.body.channel_name,
+    icon_emoji: ":slack:",
   });
 
   var req = https.request({
