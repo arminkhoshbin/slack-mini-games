@@ -29,15 +29,15 @@ app.post('/roll', function (req, res) {
     channel: req.body.channel_name,
   });
 
-  request.post(
-		config.webhook_url,
-	  { json: data },
-	  	function (err, res, body) {
-	    	if (!err && res.statusCode == 200) {
-	      	console.log('Message sent!');
-	    	}
-	   	}
-	);
+  request({
+	  url: config.webhook_url,
+	  method: 'POST',
+	  body: data,
+	}, function (err, res, body) {
+	  if (!err && res.statusCode == 200) {
+	    console.log(body);
+	  }
+	});
 
 	//console.log(req.body.user_name);
   
