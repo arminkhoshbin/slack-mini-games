@@ -26,7 +26,7 @@ app.post('/roll', function (req, res) {
 	var data = JSON.stringify({
     text: number,
     username: 'slack-mini-games',
-    channel: req.body.channel_name,
+    channel: '#' + req.body.channel_name,
   });
 
   var req = https.request({
