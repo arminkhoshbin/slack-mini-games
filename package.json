@@ -11,7 +11,6 @@
   "dependencies": {
     "body-parser": "^1.14.0",
     "express": "^4.13.3",
-    "https": "^1.0.0",
-    "request": "^2.64.0"
+    "https": "^1.0.0"
   }
 }
