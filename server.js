@@ -30,12 +30,12 @@ app.post('/roll', function (req, res) {
   });
 
   var req = https.request({
-   	host: server.address().address,
+   	host: process.env.HOST,
     path: config.webhook_url,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Content-Length': data.length
+      'Content-Length': data.length,
     }
   }, function(res){
       res.setEncoding('utf8');
