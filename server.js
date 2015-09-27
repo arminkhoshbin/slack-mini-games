@@ -3,10 +3,16 @@
 var express = require('express');
 var app = express();
 
+var request = require('request');
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+var config = require('./config/config');
+
+var slackToken;
 
 var Roller = new (require('./libs/roller'))();
 
@@ -15,8 +21,26 @@ app.get('/', function (req, res) {
 });
 
 app.post('/roll', function (req, res) {
+	var number = Roller.start();
+
+	var data = {
+    text: number,
+    username: 'slack-mini-games',
+    channel: req.body.channel_name,
+  }
+
+  request.post(
+		config.webhook_url,
+	  { json: data },
+	  	function (err, res, body) {
+	    	if (!err && res.statusCode == 200) {
+	      	console.log('Message sent!');
+	    	}
+	   	}
+	);
+
 	console.log(req.body.user_name);
-  //res.send(Roller.start());
+  
 });
 
 var server = app.listen(process.env.PORT || 3000, function () {
