@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 
-var request = require('request');
+var https = require('https');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -29,16 +29,24 @@ app.post('/roll', function (req, res) {
     channel: req.body.channel_name,
   });
 
-  request({
-	  url: config.webhook_url,
-	  json: true,
-	  method: 'POST',
-	  body: data,
-	}, function (err, res, body) {
-	    console.log(res);
-	});
+  var req = https.request({
+   	host: server.address().address,
+    path: config.webhook_url,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length
+    }
+  }, function(res){
+      res.setEncoding('utf8');
+      res.on('data', function(chunk){
+        console.log('response', chunk);
+      });
+ 	});
 
-	//console.log(req.body.user_name);
+ 	// write data to request body
+	req.write(data);
+	req.end();
   
 });
 
