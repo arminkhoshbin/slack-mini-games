@@ -24,12 +24,13 @@ app.post('/roll', function (req, res) {
 	var number = Roller.start();
 
 	var data = JSON.stringify({
-    text: '@' + req.body.user_name + ' rolled number ' + number,
+    text: req.body.user_name + ' rolled number ' + number,
     username: 'Slack Mini Games',
     channel: '#' + req.body.channel_name,
     icon_emoji: ":slack:",
   });
 
+	// send post request to webhook
   var req = https.request({
    	host: req.body.team_domain + '.slack.com',
     path: config.webhook_url,
