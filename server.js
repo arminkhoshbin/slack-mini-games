@@ -23,11 +23,11 @@ app.get('/', function (req, res) {
 app.post('/roll', function (req, res) {
 	var number = Roller.start();
 
-	var data = {
+	var data = JSON.stringify({
     text: number,
     username: 'slack-mini-games',
     channel: req.body.channel_name,
-  }
+  });
 
   request.post(
 		config.webhook_url,
@@ -39,7 +39,7 @@ app.post('/roll', function (req, res) {
 	   	}
 	);
 
-	console.log(req.body.user_name);
+	//console.log(req.body.user_name);
   
 });
 
