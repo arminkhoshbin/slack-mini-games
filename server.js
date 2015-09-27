@@ -8,6 +8,10 @@ app.use(bodyParser());
 
 var Roller = new (require('./libs/roller'))();
 
+app.get('/', function (req, res) {
+	res.send('Hello World!');
+});
+
 app.post('/roll', function (req, res) {
 	console.log(req.body.user_name);
   //res.send(Roller.start());
