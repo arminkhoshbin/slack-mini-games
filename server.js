@@ -31,6 +31,10 @@ app.post('/roll', function (req, res) {
 
   request({
 	  url: config.webhook_url,
+	  headers: {
+    	'Content-Type': 'application/json',
+      'Content-Length': data.length,
+    },
 	  method: 'POST',
 	  body: data,
 	}, function (err, res, body) {
