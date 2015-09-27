@@ -9,7 +9,8 @@ app.use(bodyParser());
 var Roller = new (require('./libs/roller'))();
 
 app.post('/roll', function (req, res) {
-  res.send(Roller.start());
+	console.log(req.body.user_name);
+  //res.send(Roller.start());
 });
 
 var server = app.listen(3000, function () {
