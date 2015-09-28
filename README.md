@@ -4,7 +4,7 @@ A collection of mini games for your slack team.
   - Roller: roll between the numbers person with highest number wins.
 
 ## Setting up
-1. setup the `Slash Command Token(s)` and `Webhook URL`. (Look at point 3 and 4 further below)  
+1. setup the `Slash Command Token(s)` and `Webhook URL`. (Look at point 3 and 4 further below.)  
 
   You can either set these in config.js file under config directory or you can use ENV variables which is a better way of doing it. Using ENV variables on heroku:  
 
