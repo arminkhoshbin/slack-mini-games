@@ -12,6 +12,13 @@ app.use(bodyParser.urlencoded({
 
 var config = require('./config/config');
 
+var webhook;
+if (typeof process.env.WEBHOOK_URL === 'undefined') {
+	webhook = config.webhook_url;
+} else {
+	webhook = process.env.WEBHOOK_URL;
+}
+
 var slackToken;
 
 var Roller = new (require('./libs/roller'))();
@@ -22,35 +29,39 @@ app.get('/', function (req, res) {
 
 app.post('/roll', function (req, res) {
 	var number = Roller.start();
+	var slackToken = req.body.token;
 
-	var data = JSON.stringify({
-    text: req.body.user_name + ' rolled number ' + number,
-    username: 'Slack Mini Games',
-    channel: '#' + req.body.channel_name,
-    icon_emoji: ":slack:",
-  });
+	if (process.env.ROLLER_TOKEN == slackToken || config.ROLLER_TOKEN == slackToken) {
 
-	// send post request to webhook
-  var req = https.request({
-   	host: req.body.team_domain + '.slack.com',
-    path: config.webhook_url,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': data.length,
-    }
-  }, function(res){
-      res.setEncoding('utf8');
-      res.on('data', function(chunk){
-        console.log('response', chunk);
-      });
- 	});
+		var data = JSON.stringify({
+	    text: req.body.user_name + ' rolled number ' + number,
+	    username: 'Slack Mini Games',
+	    channel: '#' + req.body.channel_name,
+	    icon_emoji: ":slack:",
+	  });
 
- 	// write data to request body
-	req.write(data);
-	req.end();
+		// send post request to webhook
+	  var req = https.request({
+	   	host: req.body.team_domain + '.slack.com',
+	    path: webhook,
+	    method: 'POST',
+	    headers: {
+	      'Content-Type': 'application/json',
+	      'Content-Length': data.length,
+	    }
+	  }, function(res){
+	      res.setEncoding('utf8');
+	      res.on('data', function(chunk){
+	        console.log('response', chunk);
+	      });
+	 	});
 
-	res.end('');
+	 	// write data to request body
+		req.write(data);
+		req.end();
+
+		res.end('');
+	}
   
 });
 
