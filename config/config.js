@@ -1,4 +1,4 @@
 module.exports = {
-	"webhook_url": "",
+	"WEBHOOK_URL": "",
 	"ROLLER_TOKEN": "",
 }

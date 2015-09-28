@@ -14,7 +14,7 @@ var config = require('./config/config');
 
 var webhook;
 if (typeof process.env.WEBHOOK_URL === 'undefined') {
-	webhook = config.webhook_url;
+	webhook = config.WEBHOOK_URL;
 } else {
 	webhook = process.env.WEBHOOK_URL;
 }
@@ -61,6 +61,9 @@ app.post('/roll', function (req, res) {
 		req.end();
 
 		res.end('');
+		
+	} else {
+		res.send('Invalid Token!');
 	}
   
 });
