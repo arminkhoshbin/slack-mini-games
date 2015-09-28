@@ -19,8 +19,6 @@ if (typeof process.env.WEBHOOK_URL === 'undefined') {
 	webhook = process.env.WEBHOOK_URL;
 }
 
-var slackToken;
-
 var Roller = new (require('./libs/roller'))();
 
 app.get('/', function (req, res) {
@@ -61,7 +59,7 @@ app.post('/roll', function (req, res) {
 		req.end();
 
 		res.end('');
-		
+
 	} else {
 		res.send('Invalid Token!');
 	}
