@@ -23,6 +23,7 @@ var slackUser = 'Slack Mini Games';
 var slackIcon = ':slack:';
 
 var Roller = new (require('./libs/roller'))();
+var RPS = new (require('./libs/rps'))();
 
 app.get('/', function (req, res) {
 	res.send('Hello World!');
@@ -70,14 +71,14 @@ app.post('/roll', function (req, res) {
 });
 
 app.post('/rps', function (req, res) {
-	var items = ['Rock', 'Paper', 'Scissors'];
 
+	var chance = RPS.chance();
 	var slackToken = req.body.token;
 
 	if (process.env.RPS_TOKEN == slackToken || config.RPS_TOKEN == slackToken) {
 
 		var data = JSON.stringify({
-	    text: items[Math.floor(Math.random() * items.length)] + '!',
+	    text: chance + '!',
 	    username: slackUser,
 	    channel: '#' + req.body.channel_name,
 	    icon_emoji: slackIcon,
