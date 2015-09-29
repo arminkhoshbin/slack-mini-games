@@ -7,7 +7,7 @@ var RPS = function () {
 
 RPS.prototype = {
 	chance: function() {
-		return JSON.stringify(items[Math.floor(Math.random() * items.length)]);
+		return items[Math.floor(Math.random() * items.length)];
 	}
 };
 
