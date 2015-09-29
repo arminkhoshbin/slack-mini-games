@@ -2,7 +2,9 @@
 A collection of mini games for your slack team.
 ## List of games
   - Roller: roll between the numbers, the person with highest number wins.
-  - Rock Paper Scissors
+  - Rock Paper Scissors  
+  
+  Possibly more (suggestions are welcome!)
 
 ## Setting up
 1. Setup the `Slash Command Token(s)` and `Webhook URL`. (Look at point 3 and 4 further below.)  
