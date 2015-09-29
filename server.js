@@ -35,7 +35,7 @@ app.post('/roll', function (req, res) {
 	if (process.env.ROLLER_TOKEN == slackToken || config.ROLLER_TOKEN == slackToken) {
 
 		var data = JSON.stringify({
-	    text: req.body.user_name + ' rolled number ' + number,
+	    text: "/roll \n" + req.body.user_name + ' rolled number ' + number,
 	    username: slackUser,
 	    channel: '#' + req.body.channel_name,
 	    icon_emoji: slackIcon,
@@ -77,7 +77,7 @@ app.post('/rps', function (req, res) {
 	if (process.env.RPS_TOKEN == slackToken || config.RPS_TOKEN == slackToken) {
 
 		var data = JSON.stringify({
-	    text: items[Math.floor(Math.random() * items.length)] + '!',
+	    text: "/rps \n" + items[Math.floor(Math.random() * items.length)] + '!',
 	    username: slackUser,
 	    channel: '#' + req.body.channel_name,
 	    icon_emoji: slackIcon,
