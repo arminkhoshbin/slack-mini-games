@@ -12,7 +12,8 @@ A collection of mini games for your slack team.
     `heroku config:set WEBHOOK_URL=[YOUR_WEBHOOK_URL]`  
     
     **Note:** Depending on the games you will need to add separate ENV variables for each slash command token.  
-    `heroku config:set ROLLER_TOKEN=[YOUR_ROLLER_TOKEN]`
+    `heroku config:set ROLLER_TOKEN=[YOUR_ROLLER_TOKEN]`  
+    `heroku config:set RPS_TOKEN=[YOUR_RPS_TOKEN]`
 
 2. Deploy the node.js application (I'm using heroku here.)  
 
