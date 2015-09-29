@@ -1,7 +1,7 @@
 # slack-mini-games
 A collection of mini games for your slack team.
 ## List of games
-  - Roller: roll between the numbers person with highest number wins.
+  - Roller: roll between the numbers, the person with highest number wins.
   - Rock Paper Scissors
 
 ## Setting up
