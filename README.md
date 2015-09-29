@@ -2,7 +2,7 @@
 A collection of mini games for your slack team.
 ## List of games
   - Roller: roll between the numbers person with highest number wins.
-  - Rock Paper Scissors (TODO)
+  - Rock Paper Scissors
 
 ## Setting up
 1. Setup the `Slash Command Token(s)` and `Webhook URL`. (Look at point 3 and 4 further below.)  
@@ -34,4 +34,10 @@ A collection of mini games for your slack team.
   - **Method:** `POST`  
   - **Description:** `roll a number`  
   
+  ### Rock Paper Scissors
+  - **Command:** `rps`  
+  - **URL:**  `http://DEPLOYED_APP_URL/rps`
+  - **Method:** `POST`  
+  - **Description:** `Rock Paper Scissors!`  
+
   Grab your slash command `token` from this page.
